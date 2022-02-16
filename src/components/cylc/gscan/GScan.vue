@@ -133,7 +133,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                       <workflow-icon
                         :status="scope.node.node.status"
                         :statusMsg="scope.node.node.statusMsg"
-                        :info="scope.node.node"
+                        v-cylc-object="scope.node.node"
                       />
                     </span>
                     <v-tooltip top>

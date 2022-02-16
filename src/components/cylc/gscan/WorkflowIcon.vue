@@ -16,18 +16,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <template>
-  <v-tooltip right>
-    <template v-slot:activator="{ on, attrs }">
-      <v-icon
-        v-bind="attrs"
-        v-on="on"
-        v-cylc-object="info"
-      >
-        {{ getIcon() }}
-      </v-icon>
-    </template>
-    <span>{{ statusMsg || status }}</span>
-  </v-tooltip>
+  <v-icon>
+    {{ getIcon() }}
+  </v-icon>
 </template>
 
 <script>
@@ -47,10 +38,6 @@ export default {
     statusMsg: {
       required: false,
       type: String
-    },
-    info: {
-      required: true,
-      type: Object
     }
   },
 
