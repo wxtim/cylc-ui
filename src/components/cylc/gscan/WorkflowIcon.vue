@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <v-icon
         v-bind="attrs"
         v-on="on"
+        v-cylc-object="info"
       >
         {{ getIcon() }}
       </v-icon>
@@ -46,6 +47,10 @@ export default {
     statusMsg: {
       required: false,
       type: String
+    },
+    info: {
+      required: true,
+      type: Object
     }
   },
 
