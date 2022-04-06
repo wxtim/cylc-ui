@@ -18,7 +18,7 @@
 module.exports = (api) => {
   api.cache(true)
   const presets = [
-    '@vue/app'
+    '@vue/cli-plugin-babel/preset'
   ]
   const plugins = [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
