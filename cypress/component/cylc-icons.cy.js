@@ -146,9 +146,9 @@ describe('Job component', () => {
   it('renders for each job state', () => {
     for (const state of JobStates) {
       cy.mount(JobComponent, { propsData: { status: state.name } })
-      cy.get('.c-job svg').last().screenshot(
+      cy.get('.c-job svg').last().toMatchImageSnapshot(
         `job-${state.name}`,
-        { overwrite: true }
+        // { overwrite: true }
       )
     }
   })
