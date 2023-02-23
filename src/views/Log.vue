@@ -23,6 +23,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 </style>
 <template>
   <div class="h-100">
+    <p v-if="status=='SUCCEEDED'">STATUS=SUCCEEDED</p>
+    <p v-if="status=='FAILED'">STATUS=FAILED</p>
+    <p>{{ status }}</p>
+    <p>{{ this.status }}</p>
+    <p>{{ this.$data.status }}</p>
+    <p>{{ this.lines }}</p>
+
     <v-form>
       <v-container>
         <v-row justify="start">
@@ -97,8 +104,9 @@ import { LOGS_SUBSCRIPTION } from '@/graphql/queries'
 import { Tokens } from '@/utils/uid'
 
 class LogsCallback {
-  constructor (lines) {
+  constructor (lines, status) {
     this.lines = lines
+    this.status = status
   }
 
   tearDown (store, errors) {
@@ -106,6 +114,8 @@ class LogsCallback {
 
   onAdded (added, store, errors) {
     this.lines.push(...added.lines)
+    this.status = added.status
+    debugger
   }
 
   commit (store, errors) {
@@ -151,6 +161,7 @@ export default {
       },
       selectedLogFile: '',
       lines: [],
+      status: 'UN-CHANGED',
       logFileEntered: '',
       task: '',
       file: ''
@@ -181,17 +192,18 @@ export default {
       return this.$data.workflowLogFiles
     },
     query () {
-      return new SubscriptionQuery(
+      const x = new SubscriptionQuery(
         LOGS_SUBSCRIPTION,
         this.logVariables,
         `log-query-${this._uid}`,
         // ,
         [
-          new LogsCallback(this.lines)
+          new LogsCallback(this.lines, this.status)
         ],
         /* isDelta */ false,
         /* isGlobalCallback */ false
       )
+      return x
     },
     workflowNamePrefix () {
       return `${this.workflowName}//`

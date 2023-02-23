@@ -481,7 +481,6 @@ class WorkflowService {
     let finalQuery = cloneDeep(initialQuery)
     // subscription.query.query = baseSubscriber.query.query
     subscription.callbacks = baseSubscriber.query.callbacks
-
     for (const subscriber of subscribers.slice(1)) {
       // NB: We can remove this check if we so want, as the library used to
       // combine queries supports merging variables too. Only issue would be

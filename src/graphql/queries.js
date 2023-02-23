@@ -204,7 +204,7 @@ ${WORKFLOW_DATA_FRAGMENT}
 const LOGS_SUBSCRIPTION = gql`
 subscription LogData ($workflowName: ID, $task: String, $file: String) {
   logs (workflow: $workflowName, task:$task, file: $file) {
-    lines
+    lines, status
   }
 }
 `
