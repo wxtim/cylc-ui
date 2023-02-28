@@ -23,13 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 </style>
 <template>
   <div class="h-100">
-    <p v-if="status=='SUCCEEDED'">STATUS=SUCCEEDED</p>
-    <p v-if="status=='FAILED'">STATUS=FAILED</p>
-    <p>{{ status }}</p>
-    <p>{{ this.status }}</p>
-    <p>{{ this.$data.status }}</p>
-    <p>{{ this.lines }}</p>
-
+    <p>Status: {{ getStatus() }} // {{ connect_switch }}</p>
     <v-form>
       <v-container>
         <v-row justify="start">
@@ -72,12 +66,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </v-text-field>
           </v-col>
           <v-col cols="12" md="1">
-            <v-btn
-            :disabled="isDisabled(task, file)"
-            color="primary"
-            dense
-            outlined
-            @click="setId(file, logFileEntered, task)">{{ buttonText() }}</v-btn>
+            <v-switch
+              label="connect"
+              id="connect-switch"
+              :value="connect_switch"
+              :v-model="scringe(file, logFileEntered, task)"
+            />
           </v-col>
         </v-row>
       </v-container>
@@ -104,9 +98,9 @@ import { LOGS_SUBSCRIPTION } from '@/graphql/queries'
 import { Tokens } from '@/utils/uid'
 
 class LogsCallback {
-  constructor (lines, status) {
+  constructor (lines) {
     this.lines = lines
-    this.status = status
+    this.status = ''
   }
 
   tearDown (store, errors) {
@@ -115,7 +109,6 @@ class LogsCallback {
   onAdded (added, store, errors) {
     this.lines.push(...added.lines)
     this.status = added.status
-    debugger
   }
 
   commit (store, errors) {
@@ -161,7 +154,7 @@ export default {
       },
       selectedLogFile: '',
       lines: [],
-      status: 'UN-CHANGED',
+      connect_switch: false,
       logFileEntered: '',
       task: '',
       file: ''
@@ -198,7 +191,7 @@ export default {
         `log-query-${this._uid}`,
         // ,
         [
-          new LogsCallback(this.lines, this.status)
+          new LogsCallback(this.lines)
         ],
         /* isDelta */ false,
         /* isGlobalCallback */ false
@@ -210,6 +203,43 @@ export default {
     }
   },
   methods: {
+    scringe (selectedLogFile, logFileEntered, jobSearch) {
+      const subscriptionStatus = this.getStatus()
+      const variables = this.$workflowService.subscriptions['log-query-' + this._uid].query.variables
+
+      // Test Whether log file has been changed
+      if (
+        this.task !== '' &&
+        this.file !== '' &&
+        variables.workflowName === this.workflowName &&
+        variables.task === this.task &&
+        variables.file === this.file
+      ) {
+        if (this.connect_switch === false) {
+          if (subscriptionStatus === 'SUCCESS') {
+            this.connect_switch = true
+          }
+        } else {
+          if (subscriptionStatus === 'FAILED') {
+            this.connect_switch = false
+          } else if (subscriptionStatus === 'UNKNOWN') {
+            this.connect_switch = false
+          }
+        }
+      }
+    },
+    getStatus () {
+      if ('log-query-' + this._uid in this.$workflowService.subscriptions) {
+        const statusMsg = this.$workflowService.subscriptions['log-query-' + this._uid].callbacks[0].status
+        if (statusMsg === undefined || statusMsg === '') {
+          return 'UNKNOWN'
+        } else {
+          return statusMsg
+        }
+      } else {
+        return 'UNKNOWN'
+      }
+    },
     setId (selectedLogFile, logFileEntered, jobSearch) {
       this.$data.lines = []
       this.$workflowService.unsubscribe(this)
@@ -222,7 +252,7 @@ export default {
       if (this.$data.lines.length) {
         return 'Update'
       }
-      return 'Search'
+      return 'Connect'
     },
     getFileName (selectedLogFile, logFileEntered) {
       if (selectedLogFile === 'scheduler/log') {
