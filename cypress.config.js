@@ -13,6 +13,7 @@ module.exports = defineConfig({
   fixturesFolder: 'tests/e2e/fixtures',
   screenshotsFolder: 'tests/e2e/screenshots',
   videosFolder: 'tests/e2e/videos',
+  videoCompression: false,
 
   e2e: {
     baseUrl: 'http://localhost:5173',

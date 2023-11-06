@@ -19,7 +19,11 @@ import { WorkflowStateOrder } from '@/model/WorkflowState.model'
 
 describe('Dashboard', () => {
   beforeEach(() => {
-    cy.visit('/#/')
+    cy.visit('/#/').should('not.be.empty')
+  })
+
+  it('Generates a dashboard screenshot for the docs', () => {
+    cy.screenshot('dashboard', { overwrite: true })
   })
 
   it('Displays the Dashboard link as active on the left sidebar menu', () => {

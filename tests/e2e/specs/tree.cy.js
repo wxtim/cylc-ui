@@ -1,4 +1,4 @@
-/**
+  /**
  * Copyright (C) NIWA & British Crown (Met Office) & Contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,13 @@ import {
 } from '@/components/cylc/tree/TreeItem.vue'
 
 describe('Tree view', () => {
+  it('Get a screenshot of the Gscan and tree view', () => {
+    cy.visit('/#/workspace/one')
+    .get('.node-data-task:first')
+    .should('be.visible')
+    cy
+    .screenshot('tree_and_gscan', {'overwrite': true})
+  })
   it('Should display cycle points for the mocked workflow', () => {
     cy.visit('/#/workspace/one')
     cy
