@@ -54,6 +54,7 @@ export const RULES = {
 }
 
 export const RUNTIME_SETTING = 'RuntimeSetting'
+export const TASK_EVENTS = 'TaskEvents'
 
 export default {
   defaultProps: {
@@ -169,6 +170,13 @@ export default {
         RULES.cylcConfigItem
       ]
     },
+    TaskEvents: {
+      is: VTextField,
+      placeholder: '[section]setting',
+      rules: [
+        RULES.cylcConfigItem
+      ]
+    },
     Flow: {
       is: VTextField,
       placeholder: 'flow number',
@@ -177,6 +185,9 @@ export default {
       ]
     },
     [RUNTIME_SETTING]: {
+      is: GMapItem
+    },
+    [TASK_EVENTS]: {
       is: GMapItem
     }
   },
@@ -192,7 +203,7 @@ export default {
     }),
     LIST: (ofType) => ({
       is: GList,
-      addAtStart: ofType?.name === RUNTIME_SETTING
+      addAtStart: ofType?.name === RUNTIME_SETTING || ofType?.name === TASK_EVENTS
     }),
     OBJECT: (ofType) => ({
       is: GObject // happy naming coincidence
