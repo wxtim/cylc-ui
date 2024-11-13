@@ -54,6 +54,7 @@ export const RULES = {
 }
 
 export const RUNTIME_SETTING = 'RuntimeSetting'
+export const TASK_EVENT_SETTINGS = 'EventSetting'
 
 export default {
   defaultProps: {
@@ -178,6 +179,9 @@ export default {
     },
     [RUNTIME_SETTING]: {
       is: GMapItem
+    },
+    [TASK_EVENT_SETTINGS]: {
+      is: GMapItem,
     }
   },
 
@@ -192,7 +196,8 @@ export default {
     }),
     LIST: (ofType) => ({
       is: GList,
-      addAtStart: ofType?.name === RUNTIME_SETTING
+      // addAtStart: ofType?.name === RUNTIME_SETTING
+      addAtStart: ofType?.name === RUNTIME_SETTING || TASK_EVENT_SETTINGS
     }),
     OBJECT: (ofType) => ({
       is: GObject // happy naming coincidence
