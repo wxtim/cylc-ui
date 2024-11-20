@@ -24,6 +24,7 @@ import GList from '@/components/graphqlFormGenerator/components/List.vue'
 import GObject from '@/components/graphqlFormGenerator/components/Object.vue'
 import GBroadcastSetting from '@/components/graphqlFormGenerator/components/BroadcastSetting.vue'
 import GMapItem from '@/components/graphqlFormGenerator/components/MapItem.vue'
+// import GFixedKeysMapItem from '@/components/graphqlFormGenerator/components/FixedKeysMapItem.vue'
 
 const NumberFieldProps = {
   is: VTextField,
@@ -50,7 +51,9 @@ export const RULES = {
   taskID:
     (x) => Boolean(!x || x.match(/^(.){1,}\/(.){1,}$/)) || 'Invalid',
   flow:
-    (x) => Boolean(!x || x.match(/(^\d+$|^(all|new|none)$)/)) || 'Invalid'
+    (x) => Boolean(!x || x.match(/(^\d+$|^(all|new|none)$)/)) || 'Invalid',
+  is_task_events_setting:
+    (x) => Boolean(!x || x.match(/(^\d+$|^(execution timeout|handlers|handler events|handler retry delays|mail events|submission timeout|expired handlers|late offset|late handlers|submitted handlers|started handlers|succeeded handlers|failed handlers|submission failed handlers|warning handlers|critical handlers|retry handlers|submission retry handlers|execution timeout handlers|submission timeout handlers|custom handlers)$)/)) || 'Invalid'
 }
 
 export const RUNTIME_SETTING = 'RuntimeSetting'
@@ -182,6 +185,9 @@ export default {
     },
     [TASK_EVENT_SETTINGS]: {
       is: GMapItem,
+      rules: [
+        RULES.is_task_events_setting
+      ]
     }
   },
 
