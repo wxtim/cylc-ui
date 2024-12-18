@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             />
             <span class="mx-1">{{ node.name }}</span>
           </template>
-          <template v-else-if="node.type === 'task'">
+          <template v-else-if="node.type === 'task' && node.node.flowNums !== '[]'">
             <!-- Task summary -->
             <Task
               v-command-menu="node"
@@ -319,6 +319,10 @@ export default {
 
   icons: {
     mdiChevronRight,
+  },
+
+  mounted () {
+    console.log(this.node.node.flowNums.type)
   },
 }
 </script>

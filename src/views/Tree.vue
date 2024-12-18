@@ -187,6 +187,7 @@ fragment TaskProxyData on TaskProxy {
   isHeld
   isQueued
   isRunahead
+  flowNums
   task {
     meanElapsedTime
   }
