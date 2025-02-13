@@ -89,16 +89,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           Xtriggers
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <table>
-            <tr>
-              <th>Xtrigger</th>
-              <th>Is Satisfied?</th>
-            </tr>
-            <tr v-for="xt in xtriggers" :key="xt">
-              <td>{{ xt.id }}</td>
-              <td><center><v-icon>{{ xt.satisfactionIcon }}</v-icon></center></td>
-            </tr>
-          </table>
+          <ul>
+            <li v-for="xt in xtriggers" :key="xt">
+              <v-icon>{{ xt.satisfactionIcon }}</v-icon>  {{ xt.id }}
+            </li>
+          </ul>
         </v-expansion-panel-text>
       </v-expansion-panel>
 
@@ -344,14 +339,4 @@ export default {
     }
   }
 
-    .xtriggers-panel {
-      td {
-        border-bottom: 1px rgb(159, 206, 206) solid;
-        padding-left: 4px;
-      }
-      th {
-        padding-left: 4px;
-        border-bottom: 2px rgb(159, 206, 206) solid;
-      }
-    }
 </style>

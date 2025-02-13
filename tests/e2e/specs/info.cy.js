@@ -42,5 +42,11 @@ describe('Info View', () => {
       .click({ force: true })
       .get('.v-expansion-panel--active')
       .should('have.length', 2)
-  })
+
+      // Xtriggers table is poupulated:
+      .get('.xtriggers-table tbody')
+      .contains('wall_clock(trigger_time=29789769600)')
+      .get('.xtriggers-table tbody')
+      .contains('xrandom(1, _={"anything": "goes"}, secs=0)')
+    })
 })

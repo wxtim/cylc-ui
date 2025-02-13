@@ -31,6 +31,21 @@
             }
           ],
 
+          "xtriggers": [
+            {
+              "id": "wall_clock(trigger_time=29789769600)",
+              "satisfied": false
+            },
+            {
+              "id": "xrandom(1, _={\"anything\": \"goes\"}, secs=0)",
+              "satisfied": true
+            },
+            {
+              "id": "custom_xtrigger('arg', foo='kwarg')",
+              "satisfied": true
+            }
+          ],
+
           "prerequisites": [
             {
               "satisfied": true,
