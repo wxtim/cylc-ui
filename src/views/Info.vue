@@ -98,6 +98,11 @@ fragment TaskProxyData on TaskProxy {
   runtime {
     completion
   }
+
+  xtriggers {
+    id
+    satisfied
+  }
 }
 
 fragment TaskDefinitionData on Task {
