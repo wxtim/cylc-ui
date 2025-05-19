@@ -84,7 +84,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <v-expansion-panel class="run-mode-panel">
+      <v-expansion-panel class="run-mode-panel" data-cy="run-mode-panel">
         <v-expansion-panel-title color="blue-grey-lighten-2">
           Run Mode
         </v-expansion-panel-title>
@@ -93,7 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <v-expansion-panel class="xtriggers-panel">
+      <v-expansion-panel class="xtriggers-panel" data-cy="xtriggers-panel">
         <v-expansion-panel-title color="blue-grey-lighten-2">
           Xtriggers
         </v-expansion-panel-title>
@@ -121,7 +121,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </v-expansion-panel>
 
       <!-- The prereqs -->
-      <v-expansion-panel class="prerequisites-panel">
+      <v-expansion-panel class="prerequisites-panel" data-cy="prerequisites-panel">
         <v-expansion-panel-title color="blue-grey-lighten-2">
           Prerequisites
         </v-expansion-panel-title>
@@ -155,7 +155,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </v-expansion-panel>
 
       <!-- The outputs -->
-      <v-expansion-panel class="outputs-panel">
+      <v-expansion-panel class="outputs-panel" data-cy="outputs-panel">
         <v-expansion-panel-title color="blue-grey-lighten-1">
           Outputs
         </v-expansion-panel-title>
@@ -172,7 +172,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </v-expansion-panel>
 
       <!-- The completion -->
-      <v-expansion-panel class="completion-panel">
+      <v-expansion-panel class="completion-panel" data-cy="completion-panel">
         <v-expansion-panel-title color="blue-grey-lighten-2">
           Completion
         </v-expansion-panel-title>

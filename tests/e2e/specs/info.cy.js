@@ -37,7 +37,7 @@ describe('Info View', () => {
       .should('have.class', 'metadata-panel')
 
       // other panels should expand when clicked
-      .get('.c-info .v-expansion-panel:nth-child(2)')
+      .get('[data-cy=run-mode-panel]')
       .find('button')
       .click({ force: true })
       .get('.v-expansion-panel--active')
@@ -46,30 +46,29 @@ describe('Info View', () => {
 
       // Xtriggers should be ticked or unticked
       // depending on fulfillment:
-      .get('.c-info .v-expansion-panel:nth-child(3)')
+      .get('[data-cy=xtriggers-panel]')
       .find('button')
       .click({ force: true })
       .get('.v-expansion-panel--active')
-      .get('.c-info .v-expansion-panel:nth-child(3)')
       .get('table')
       .should('contain', 'xtrigger')
       .and('contain', 'myxt(foo=42)')
       .should('contain', 'another xtrigger')
       .and('contain', 'myxt(foo=41)')
 
-      .get('.c-info .v-expansion-panel:nth-child(4)')
+      .get('[data-cy=prerequisites-panel]')
       .find('button')
       .click({ force: true })
       .get('.v-expansion-panel--active')
       .should('have.length', 4)
 
-      .get('.c-info .v-expansion-panel:nth-child(5)')
+      .get('[data-cy=outputs-panel]')
       .find('button')
       .click({ force: true })
       .get('.v-expansion-panel--active')
       .should('have.length', 5)
 
-      .get('.c-info .v-expansion-panel:nth-child(6)')
+      .get('[data-cy=completion-panel]')
       .find('button')
       .click({ force: true })
       .get('.v-expansion-panel--active')
