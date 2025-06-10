@@ -113,8 +113,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 </v-list-item-title>
                 <v-list-item-subtitle>
                   The task is not ready to run yet - it is still waiting on
-                  upstream <b>dependencies</b> or old style
-                  <b>external triggers</b>.
+                  upstream <b>dependencies</b> (or old style
+                  external triggers).
                 </v-list-item-subtitle>
               </v-list-item>
               <v-list-item>
