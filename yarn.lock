@@ -3941,6 +3941,7 @@ __metadata:
     concurrently: "npm:9.1.2"
     cross-fetch: "npm:4.1.0"
     cypress: "npm:14.4.0"
+    cypress-visual-regression: "npm:^5.3.0"
     cypress-vite: "npm:1.6.0"
     dedent: "npm:1.6.0"
     enumify: "npm:2.0.0"
@@ -3994,6 +3995,20 @@ __metadata:
       optional: true
   languageName: unknown
   linkType: soft
+
+"cypress-visual-regression@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "cypress-visual-regression@npm:5.3.0"
+  dependencies:
+    chalk: "npm:4.1.2"
+    pixelmatch: "npm:5.3.0"
+    pngjs: "npm:7.0.0"
+    sanitize-filename: "npm:1.6.3"
+  peerDependencies:
+    cypress: ">=12"
+  checksum: 10c0/a38ee912f85dd444fcd327884449dbf2079216d6aa2e8e953b7dd389ebc9a6d7c6ee03a3dccb20b93957976bd536299b314c74d3c98aab9b8fb59d416afeacd0
+  languageName: node
+  linkType: hard
 
 "cypress-vite@npm:1.6.0":
   version: 1.6.0
@@ -8378,6 +8393,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pixelmatch@npm:5.3.0":
+  version: 5.3.0
+  resolution: "pixelmatch@npm:5.3.0"
+  dependencies:
+    pngjs: "npm:^6.0.0"
+  bin:
+    pixelmatch: bin/pixelmatch
+  checksum: 10c0/30850661db29b57cefbe6cf36e930b7517aea4e0ed129e85fcc8ec04a7e6e7648a822a972f8e01d2d3db268ca3c735555caf6b8099a164d8b64d105986d682d2
+  languageName: node
+  linkType: hard
+
 "pkg-conf@npm:^3.1.0":
   version: 3.1.0
   resolution: "pkg-conf@npm:3.1.0"
@@ -8410,6 +8436,20 @@ __metadata:
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
   checksum: 10c0/2044cfc34b2e8c88b73379ea4a36fc577db04f651c2909041b054c981cd863dd5373ebd030123ab058d194ae615d3a97cfdac653991e499d10caf592e8b3dc33
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:7.0.0":
+  version: 7.0.0
+  resolution: "pngjs@npm:7.0.0"
+  checksum: 10c0/0d4c7a0fd476a9c33df7d0a2a73e1d56537628a668841f6995c2bca070cf30819f9254a64363266bc14ef2fee47659dd3b4f2b18eec7ab65143015139f497b38
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "pngjs@npm:6.0.0"
+  checksum: 10c0/ac23ea329b1881d1a10575aff58116dc27b894ec3f5b84ba15c7f527d21e609fbce7ba16d48f8ccb86c7ce45ceed622472765476ab2875949d4bec55e153f87a
   languageName: node
   linkType: hard
 
@@ -9187,6 +9227,15 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: 10c0/7e3c8b2e88a1841c9671094bbaeebd94448111dd90a81a1f606f3f67708a6ec57763b3b47f06da09fc6054193e0e6709e77325415dc8422b04497a8070fa02d4
+  languageName: node
+  linkType: hard
+
+"sanitize-filename@npm:1.6.3":
+  version: 1.6.3
+  resolution: "sanitize-filename@npm:1.6.3"
+  dependencies:
+    truncate-utf8-bytes: "npm:^1.0.0"
+  checksum: 10c0/16ff47556a6e54e228c28db096bedd303da67b030d4bea4925fd71324932d6b02c7b0446f00ad33987b25b6414f24ae968e01a1a1679ce599542e82c4b07eb1f
   languageName: node
   linkType: hard
 
@@ -10413,6 +10462,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"truncate-utf8-bytes@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "truncate-utf8-bytes@npm:1.0.2"
+  dependencies:
+    utf8-byte-length: "npm:^1.0.1"
+  checksum: 10c0/af2b431fc4314f119b551e5fccfad49d4c0ef82e13ba9ca61be6567801195b08e732ce9643542e8ad1b3df44f3df2d7345b3dd34f723954b6bb43a14584d6b3c
+  languageName: node
+  linkType: hard
+
 "ts-invariant@npm:^0.10.3":
   version: 0.10.3
   resolution: "ts-invariant@npm:0.10.3"
@@ -10721,6 +10779,13 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/161599bf921cfaa41c85d2b01c871975ee99260f3e874c2d41c05890d41170297bdcf314bc5185e7a700de2034ac5b888e3efc8e9f35724f4918f53538d717c9
+  languageName: node
+  linkType: hard
+
+"utf8-byte-length@npm:^1.0.1":
+  version: 1.0.5
+  resolution: "utf8-byte-length@npm:1.0.5"
+  checksum: 10c0/e69bda3299608f4cc75976da9fb74ac94801a58b9ca29fdad03a20ec952e7477d7f226c12716b5f36bd4cff8151d1d152d02ee1df3752f017d4b2c725ce3e47a
   languageName: node
   linkType: hard
 

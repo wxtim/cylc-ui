@@ -1,4 +1,5 @@
 const { defineConfig } = require('cypress')
+const { configureVisualRegression } = require('cypress-visual-regression')
 const vitePreprocessor = require('cypress-vite')
 const path = require('path')
 
@@ -40,6 +41,12 @@ module.exports = defineConfig({
   },
 
   component: {
+    env: {
+      // Change this value to base to create new images
+      visualRegressionType: 'regression',
+      visualRegressionBaseDirectory: 'tests/screenshots/base',
+      visualRegressionDiffDirectory: 'tests/screenshots/diff',
+    },
     devServer: {
       framework: 'vue',
       bundler: 'vite'
@@ -51,7 +58,11 @@ module.exports = defineConfig({
     },
     specPattern: 'tests/component/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'tests/component/support/index.js',
-    indexHtmlFile: 'tests/component/support/component-index.html'
+    indexHtmlFile: 'tests/component/support/component-index.html',
+    screenshotsFolder: 'tests/e2e/screenshots',
+    setupNodeEvents(on, config) {
+      configureVisualRegression(on)
+    }
   },
 
   env: {

@@ -23,6 +23,9 @@ import '@/styles/index.scss'
 import { createVuetify } from 'vuetify'
 import { mount } from 'cypress/vue'
 import { vuetifyOptions } from '@/plugins/vuetify'
+import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
+
+addCompareSnapshotCommand()
 
 // vanilla mount function
 // e.g. cy.mount(MyComponent)

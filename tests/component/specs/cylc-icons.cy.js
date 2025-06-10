@@ -81,10 +81,10 @@ describe('Task component', () => {
     for (const state of TaskStateUserOrder) {
       const task = makeTask(state.name)
       cy.mount(TaskComponent, { props: { task } })
-      cy.get('.c8-task').last().parent().screenshot(
-        `task-${state.name}`,
-        { overwrite: true, disableTimersAndAnimations: false }
-      )
+      cy.get('.c8-task')
+        .last()
+        .parent()
+        .compareSnapshot(`task-${state.name}`)
     }
   })
   it('Animates the running icon', () => {
@@ -99,10 +99,8 @@ describe('Task component', () => {
           }
         }
       )
-      cy.get('.c8-task').last().parent().screenshot(
-        `task-running-${percent}`,
-        { overwrite: true, disableTimersAndAnimations: false }
-      )
+      cy.get('.c8-task').last().parent()
+        .compareSnapshot(`task-running-${percent}`)
         // check the progress animation
         .get('.c8-task:last .status .progress')
         // the animation duration should be equal to the expected job duration
@@ -118,7 +116,7 @@ describe('Task component', () => {
             -MEAN_ELAPSED_TIME * (percent / 100),
             5
           )
-        })
+      })
     }
   })
   it('Renders for each task modifier', () => {
@@ -134,14 +132,7 @@ describe('Task component', () => {
       task = makeTask()
       task[modifier] = true
       cy.mount(TaskComponent, { props: { task } })
-      cy.get('.c8-task').last().screenshot(
-        `task-${modifier}`,
-        {
-          overwrite: true,
-          disableTimersAndAnimations: false,
-          padding: [10, 5, 5, 10]
-        }
-      )
+      cy.get('.c8-task').compareSnapshot(`task-${modifier}`)
     }
   })
   it('Renders different modifier sizes', () => {
@@ -149,14 +140,7 @@ describe('Task component', () => {
     task.isHeld = true
     for (const modifierSize of [0.2, 0.4, 0.6, 0.8]) {
       cy.mount(TaskComponent, { props: { task, modifierSize } })
-      cy.get('.c8-task').last().screenshot(
-        `task-modifier-size-${modifierSize}`,
-        {
-          overwrite: true,
-          disableTimersAndAnimations: false,
-          padding: [10, 5, 5, 10]
-        }
-      )
+      cy.get('.c8-task').compareSnapshot(`task-${modifierSize}`)
     }
   })
 })
@@ -165,10 +149,7 @@ describe('Job component', () => {
   it('renders for each job state', () => {
     for (const status of JobStateNames) {
       cy.mount(JobComponent, { props: { status } })
-      cy.get('.c-job svg').last().screenshot(
-        `job-${status}`,
-        { overwrite: true }
-      )
+      cy.get('.c-job svg').compareSnapshot(`job-${status}`)
     }
   })
 })
